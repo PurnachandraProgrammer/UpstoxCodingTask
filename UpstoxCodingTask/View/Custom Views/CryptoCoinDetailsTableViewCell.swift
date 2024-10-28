@@ -9,7 +9,7 @@ import UIKit
 
 class CryptoCoinDetailsTableViewCell : UITableViewCell {
 
-    private let coinNameLabel : UILabel = {
+    let coinNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .gray
         lbl.font = UIFont.systemFont(ofSize: 16)
@@ -18,7 +18,7 @@ class CryptoCoinDetailsTableViewCell : UITableViewCell {
         return lbl
     }()
     
-    private let coinTypeLabel : UILabel = {
+    let coinTypeLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .gray
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
@@ -26,7 +26,7 @@ class CryptoCoinDetailsTableViewCell : UITableViewCell {
         return lbl
     }()
 
-    private let coinImageView : UIImageView = {
+    let coinImageView : UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "crypto-coin"))
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.contentMode = .scaleAspectFit
@@ -34,7 +34,7 @@ class CryptoCoinDetailsTableViewCell : UITableViewCell {
         return imgView
     }()
     
-    private let coinNewImageView : UIImageView = {
+    let coinNewImageView : UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "new-icon"))
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.contentMode = .scaleAspectFit
@@ -43,7 +43,7 @@ class CryptoCoinDetailsTableViewCell : UITableViewCell {
     }()
 
     
-    private let verticalStackView : UIStackView = {
+    let verticalStackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical

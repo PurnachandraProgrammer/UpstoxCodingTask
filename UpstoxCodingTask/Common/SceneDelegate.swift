@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = CryptoCoinsListViewController()
+        
+        let navigationController = UINavigationController(rootViewController: CryptoCoinsListViewController())
+        navigationController.navigationBar.tintColor = .purple
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

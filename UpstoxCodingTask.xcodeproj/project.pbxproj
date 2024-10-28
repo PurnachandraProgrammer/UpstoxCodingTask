@@ -30,6 +30,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4F6EE11C2CCB753F00E1B429 /* Exceptions for "UpstoxCodingTaskTests" folder in "UpstoxCodingTask" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"JSON Responses/CryptoCoinsResponse.json",
+			);
+			target = 4FB207292CB8E6D7001AB71E /* UpstoxCodingTask */;
+		};
 		4FB207522CB8E6D8001AB71E /* Exceptions for "UpstoxCodingTask" folder in "UpstoxCodingTask" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -50,6 +57,9 @@
 		};
 		4FB207432CB8E6D8001AB71E /* UpstoxCodingTaskTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4F6EE11C2CCB753F00E1B429 /* Exceptions for "UpstoxCodingTaskTests" folder in "UpstoxCodingTask" target */,
+			);
 			path = UpstoxCodingTaskTests;
 			sourceTree = "<group>";
 		};

@@ -1,11 +1,26 @@
 import Foundation
 
-// MARK: - WelcomeElement
 struct CryptoCoin: Codable {
     let name, symbol: String
     let isNew, isActive: Bool
-    let type: TypeEnum
+    let type: CryptoType
 
+    init(name: String, symbol: String, isNew: Bool, isActive: Bool, type: CryptoType) {
+        self.name = name
+        self.symbol = symbol
+        self.isNew = isNew
+        self.isActive = isActive
+        self.type = type
+    }
+    
+    init(name: String, symbol: String) {
+        self.name = name
+        self.symbol = symbol
+        self.isNew = false
+        self.isActive = false
+        self.type = CryptoType.coin
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name, symbol
         case isNew = "is_new"
@@ -14,10 +29,7 @@ struct CryptoCoin: Codable {
     }
 }
 
-enum TypeEnum: String, Codable {
+enum CryptoType: String, Codable {
     case coin = "coin"
     case token = "token"
 }
-
-typealias Welcome = [CryptoCoin]
-
