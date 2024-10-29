@@ -61,7 +61,7 @@ class CryptoCoinsListViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search-icon"), style: .plain, target: self, action:#selector(CryptoCoinsListViewController.showHideSearchBar))
         
-        /*navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action:#selector(CryptoCoinsListViewController.showSearchFilterView))*/
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action:#selector(CryptoCoinsListViewController.showSearchFilterView))
                                            
         view.addSubview(cryptoCoinsListTableView)
         view.addSubview(activityIndicator)
