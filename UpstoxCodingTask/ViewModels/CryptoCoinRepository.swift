@@ -25,15 +25,27 @@ class CryptoCoinRepository : CryptoDataRepository {
     
     func fetchCryptoCoinsData() async -> ([CryptoCoin]?,Error?) {
         
+        // Check for internet connection
         if networkManager.isConnectedToInternet() {
             let cryptoCoinsResult  = await cryptoAPIService.getCryptoCoinsList()
+            
+            // 1. Get the data from the server.
+            // 2. Either you have valid data or may not have valid data from the server.
+            // 3. You have the data, if you get successfully data, store the data in core data or replace. (Success)
+            // 4. Display the data from core data storage.
+            // 5. If you have no data, get the data from 4. (core data), display the last stored data.
+            // 6.
+            
             if let result = cryptoCoinsResult.0 {
+                // TODO: delete data from core data and then insert
                 coreDataService.insertCryptoCoinsInLocalStorage(records: result) { error in
-                    if let error {
-                        // TODO : Handle error
-                    }
+                    
+                    // TODO: fetch the data from local storage and return from here.
                 }
                 return cryptoCoinsResult
+            }
+            else {
+                // fetch from core data
             }
         }
         else {

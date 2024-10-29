@@ -25,7 +25,7 @@ final class CryptoDataService : CryptoLocalStorageService {
     
     func insertCryptoCoinsInLocalStorage(records: Array<CryptoCoin>, completionHandler: @escaping ((any Error)?) -> Void) {
         
-        debugPrint("CryptoCoreDataService: Insert record operation is starting")
+        //debugPrint("CryptoCoreDataService: Insert record operation is starting")
        
         CoreDataHelper.shared.persistentContainer.performBackgroundTask { privateManagedContext in
             

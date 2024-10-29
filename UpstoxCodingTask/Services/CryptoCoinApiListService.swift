@@ -32,7 +32,9 @@ final class CryptoCoinApiListService : CryptoCoinListApiResourceService {
             return (nil,NSError(domain: "url is not proper", code: 500))
         }
         
-        let urlSession = URLSession.shared
+        let urlSessionConfiguration = URLSessionConfiguration.default
+        urlSessionConfiguration.timeoutIntervalForRequest = 10
+        let urlSession = URLSession(configuration: urlSessionConfiguration)
         let urlRequest = URLRequest(url: url)
         
         do {

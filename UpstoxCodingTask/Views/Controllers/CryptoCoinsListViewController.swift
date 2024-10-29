@@ -135,7 +135,6 @@ class CryptoCoinsListViewController: UIViewController {
         
         initTitle()
         initWithBinding()
-        
         super.viewDidLoad()
     }
     
@@ -145,7 +144,6 @@ class CryptoCoinsListViewController: UIViewController {
     }
     
     func showAlert(for error: NSError) {
-        
         // Present the alert on the main thread
         let alert = UIAlertController(title: error.domain, message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -153,8 +151,9 @@ class CryptoCoinsListViewController: UIViewController {
     }
     
     @objc func showSearchFilterView() {
-
         let vc = CryptoSearchFilterViewController()
+        //vc.filterModel = cryptoCoinsListViewModel.filterModel
+        vc.cryptoCoinsListViewModel = cryptoCoinsListViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.navigationController?.present(vc, animated: false)
     }
@@ -165,11 +164,9 @@ extension CryptoCoinsListViewController : UITableViewDelegate, UITableViewDataSo
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cryptoCoinsListViewModel.getNumberOfCoins()
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cryptoCoinCellIdentifier) as! CryptoCoinDetailsTableViewCell

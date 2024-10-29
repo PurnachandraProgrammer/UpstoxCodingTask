@@ -7,17 +7,22 @@
 import UIKit
 
 class CryptoSearchFilterViewController: UIViewController {
-    // define lazy views
 
-    let activeCoinsButtonView = ButtonView(title: "Active Coins", imageName: "checkmark")
-    let inActiveCoinsButtonView = ButtonView(title: "InActive Coins", imageName: "checkmark")
-    let onlyTokensButtonView = ButtonView(title: "Only Tokens", imageName: "checkmark")
-    let onlyCoinsButtonView = ButtonView(title: "Only Coins", imageName: "checkmark")
-    let newCoinsButtonView = ButtonView(title: "New Coins", imageName: "checkmark")
+    // Have Model class to preserve
+    var cryptoCoinsListViewModel: CryptoCoinsListViewModel!
+    
+    // Create the search filter button in modal view.
+    let activeCoinsButtonView = ButtonView(title: "Active Coins")
+    let inActiveCoinsButtonView = ButtonView(title: "InActive Coins")
+    let onlyTokensButtonView = ButtonView(title: "Only Tokens")
+    let onlyCoinsButtonView = ButtonView(title: "Only Coins")
+    let newCoinsButtonView = ButtonView(title: "New Coins")
 
     func setUpView() {
      
         view.backgroundColor = .clear
+        
+        let filterModel = cryptoCoinsListViewModel.filterModel
         
         let topStackView = UIStackView(arrangedSubviews:[activeCoinsButtonView,inActiveCoinsButtonView,onlyTokensButtonView])
         topStackView.axis = .horizontal
@@ -28,7 +33,7 @@ class CryptoSearchFilterViewController: UIViewController {
         let bottomStackView = UIStackView(arrangedSubviews:[onlyCoinsButtonView ,newCoinsButtonView])
         bottomStackView.axis = .horizontal
         bottomStackView.distribution = .fillProportionally
-        bottomStackView.spacing = 02.0
+        bottomStackView.spacing = 10.0
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let verticalStackView = UIStackView(arrangedSubviews: [topStackView,bottomStackView])
@@ -74,11 +79,27 @@ class CryptoSearchFilterViewController: UIViewController {
         // Activate constraints
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
+        
+        activeCoinsButtonView.isButtonSelected = filterModel.isActiveCoin
+        activeCoinsButtonView.buttonSelected()
+        
+        inActiveCoinsButtonView.isButtonSelected = filterModel.isInActiveCoin
+        inActiveCoinsButtonView.buttonSelected()
+
+        onlyTokensButtonView.isButtonSelected = filterModel.isOnlyTokens
+        onlyTokensButtonView.buttonSelected()
+
+        onlyCoinsButtonView.isButtonSelected = filterModel.isOnlyCoins
+        onlyCoinsButtonView.buttonSelected()
+
+        newCoinsButtonView.isButtonSelected = filterModel.isNewCoins
+        newCoinsButtonView.buttonSelected()
+        
     }
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
         return view
@@ -93,7 +114,7 @@ class CryptoSearchFilterViewController: UIViewController {
     }()
     
     // Constants
-    let defaultHeight: CGFloat = 200
+    let defaultHeight: CGFloat = 150
     let dismissibleHeight: CGFloat = 200
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 64
     // keep current new height, initial is default height
@@ -151,6 +172,15 @@ class CryptoSearchFilterViewController: UIViewController {
     
     func animateDismissView() {
         // hide blur view
+        
+        cryptoCoinsListViewModel.filterModel.isActiveCoin = activeCoinsButtonView.isButtonSelected
+        cryptoCoinsListViewModel.filterModel.isInActiveCoin = inActiveCoinsButtonView.isButtonSelected
+        cryptoCoinsListViewModel.filterModel.isOnlyTokens = onlyTokensButtonView.isButtonSelected
+        cryptoCoinsListViewModel.filterModel.isOnlyCoins = onlyCoinsButtonView.isButtonSelected
+        cryptoCoinsListViewModel.filterModel.isNewCoins = newCoinsButtonView.isButtonSelected
+        
+        cryptoCoinsListViewModel.updateSearchFilters()
+
         dimmedView.alpha = maxDimmedAlpha
         UIView.animate(withDuration: 0.4) {
             self.dimmedView.alpha = 0

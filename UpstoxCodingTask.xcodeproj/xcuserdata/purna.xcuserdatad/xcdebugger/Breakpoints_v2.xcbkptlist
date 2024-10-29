@@ -82,36 +82,6 @@
             endingLineNumber = "200"
             landmarkName = "didDismissSearchController(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3178D2C9-E276-4F4E-A11F-04A3BB40A648 - 980388d3ba2248b2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UpstoxCodingTask.CryptoCoinsListViewController.didDismissSearchController(__C.UISearchController) -&gt; ()"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/View/Controllers/CryptoCoinsListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "200"
-                  endingLineNumber = "200">
-               </Location>
-               <Location
-                  uuid = "3178D2C9-E276-4F4E-A11F-04A3BB40A648 - 5a466a1370504202"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in UpstoxCodingTask.CryptoCoinsListViewController.didDismissSearchController(__C.UISearchController) -&gt; ()"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/View/Controllers/CryptoCoinsListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "200"
-                  endingLineNumber = "200">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -220,8 +190,8 @@
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "fetchCryptoCoinsData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -236,40 +206,10 @@
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "fetchCryptoCoinsData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "07F2E56C-77A0-4B9E-851D-409D68D7E00D - 3a889ca43f08e8d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-               <Location
-                  uuid = "07F2E56C-77A0-4B9E-851D-409D68D7E00D - 9f144caf8cbc9d55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,40 +222,10 @@
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "fetchCryptoCoinsData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2267DF55-4658-4C08-9391-4CCD0F32A08F - c1f1c15d80aa621"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-               <Location
-                  uuid = "2267DF55-4658-4C08-9391-4CCD0F32A08F - 3a889ca43f08ea63"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -328,40 +238,10 @@
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "fetchCryptoCoinsData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A9C6B4D1-5C96-4860-9CF3-931795242C67 - 9f144caf8cbc9d74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32">
-               </Location>
-               <Location
-                  uuid = "A9C6B4D1-5C96-4860-9CF3-931795242C67 - 9f144caf8cbc9d74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in UpstoxCodingTask.CryptoCoinRepository.fetchCryptoCoinsData() async -&gt; (Swift.Optional&lt;Swift.Array&lt;UpstoxCodingTask.CryptoCoin&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;)"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -374,8 +254,8 @@
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinsListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "fetchCryptoCoinsList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -383,61 +263,177 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84177BB3-392A-4529-BEB8-82B26064BF5C"
+            uuid = "24108A52-A08B-496F-B426-DFF667EB7E52"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UpstoxCodingTask/ViewModels/CryptoCoinsListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "fetchCryptoCoinsList()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "84177BB3-392A-4529-BEB8-82B26064BF5C - 9bc44904d1052c59"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in UpstoxCodingTask.CryptoCoinsListViewModel.fetchCryptoCoinsList() async -&gt; ()"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinsListViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23">
-               </Location>
-               <Location
-                  uuid = "84177BB3-392A-4529-BEB8-82B26064BF5C - bfa97127fb7c5232"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in UpstoxCodingTask.CryptoCoinsListViewModel.fetchCryptoCoinsList() async -&gt; ()"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinsListViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23">
-               </Location>
-               <Location
-                  uuid = "84177BB3-392A-4529-BEB8-82B26064BF5C - bb54bef7a328685b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in UpstoxCodingTask.CryptoCoinsListViewModel.fetchCryptoCoinsList() async -&gt; ()"
-                  moduleName = "UpstoxCodingTask.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/purna/Documents/Lance-free-work-up/UpstoxCodingTask/UpstoxCodingTask/ViewModels/CryptoCoinsListViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7FC1410-C93D-4D74-B4A1-D4DD907F7DDF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/ViewModels/CryptoCoinRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetchCryptoCoinsData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F71A1C57-ABE7-45C8-AA2B-E821830C1718"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "874AA28E-EF8C-41C7-BB17-9C6F61263989"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C8B8AB0-1AC7-4CB0-8E9D-6911910B8374"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6699AF9-E269-499D-9211-260FB0E43C42"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6F4F104-C194-4956-BE8F-83BD9E5C3715"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5FAA921F-63A3-428E-86C8-2338B7C6C973"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Services/CryptoCoinApiListService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getCryptoCoinsList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEFD01F5-3569-47F2-8879-2D47F9FEAFA4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Views/Custom Views/CryptoSearchFilterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "animateDismissView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24951C2B-5509-4338-BF42-260CFBCE5F6D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Views/Custom Views/CryptoSearchFilterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "animateDismissView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02A9E229-9333-4536-83C9-DC44E2B12022"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UpstoxCodingTask/Views/Custom Views/CryptoSearchFilterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "setUpView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

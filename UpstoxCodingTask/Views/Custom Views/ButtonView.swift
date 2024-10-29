@@ -13,6 +13,7 @@ class ButtonView : UIView {
     var imageView:UIImageView?
     var stackView:UIStackView?
     var isButtonSelected:Bool = false
+    var buttonSelectedClosure:((Bool)->Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,10 +21,10 @@ class ButtonView : UIView {
         setUpView()
     }
 
-    required init(title:String, imageName:String) {
+    required init(title:String, imageName:String = "checkmark", isSelection:Bool = false) {
         
         super.init(frame: CGRect.zero)
-        super.backgroundColor = .gray
+        super.backgroundColor = .white
         setUpView()
         button?.setTitle(title, for: .normal)
         imageView?.image = UIImage(named:imageName)
@@ -32,28 +33,32 @@ class ButtonView : UIView {
             imageView?.image = UIImage(systemName: imageName)
         }
         
+        isButtonSelected = isSelection
+        buttonSelected()
+        
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeViewWithSelectedStatus))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
-    @objc func changeViewWithSelectedStatus() {
-        
-        isButtonSelected = !isButtonSelected
-        
+    func buttonSelected() {
         if isButtonSelected {
             imageView?.isHidden = false
+            super.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 209/255, alpha: 1.0)
         }
         else {
             imageView?.isHidden = true
+            super.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0)
         }
+    }
+    
+    @objc func changeViewWithSelectedStatus() {
+        isButtonSelected = !isButtonSelected
+        buttonSelected()
+        self.buttonSelectedClosure?(isButtonSelected)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    @objc func buttonSelected() {
-        print("the button selected")
     }
     
     func setUpView ()  {
@@ -62,26 +67,30 @@ class ButtonView : UIView {
         self.isUserInteractionEnabled = true
         
         let button = UIButton()
-        button.setTitle("Search", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitle("", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
-        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.titleLabel?.font = .systemFont(ofSize: 13)
         button.clipsToBounds = true
         button.isEnabled = false
         addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(self.changeViewWithSelectedStatus), for: .touchUpInside)
+        let constraint = button.widthAnchor.constraint(equalToConstant: 80)
+        constraint.isActive = true
+        constraint.priority = .defaultLow
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: "checkmark")
         imageView.isHidden = true
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 10).isActive = true
         
         let stackView = UIStackView(arrangedSubviews: [imageView,button])
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.spacing = 5
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
