@@ -21,7 +21,7 @@ class ButtonView : UIView {
         setUpView()
     }
 
-    required init(title:String, imageName:String = "checkmark", isSelection:Bool = false) {
+    required init(title:String, imageName:String = "checkmark-icon", isSelection:Bool = false) {
         
         super.init(frame: CGRect.zero)
         super.backgroundColor = .white
