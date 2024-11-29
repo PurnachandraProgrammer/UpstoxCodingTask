@@ -94,7 +94,6 @@ class CryptoCoinsListViewController: UIViewController {
                 self.searchController.searchBar.isHidden = false
 
                 UIView.animate(withDuration: 0.3) {
-                    //self.cryptoCoinsListTableView.setContentOffset(CGPoint(x: 0, y: -cryptoCoinsListTableView.tableHeaderView!.frame.height), animated: false)
                     self.cryptoCoinsListTableView.setContentOffset(CGPoint(x: 0, y: -100), animated: false)
                 }
             }
