@@ -8,6 +8,21 @@ final class CoreDataHelper
     private init(){}
     static let shared = CoreDataHelper()
 
+    // Additional initializer for in-memory store
+    init(inMemory: Bool = false) {
+        if inMemory {
+            persistentContainer = NSPersistentContainer(name: "CryptoCoin")
+            let description = NSPersistentStoreDescription()
+            description.type = NSInMemoryStoreType
+            persistentContainer.persistentStoreDescriptions = [description]
+            persistentContainer.loadPersistentStores { _, error in
+                if let error = error {
+                    fatalError("Unresolved error \(error)")
+                }
+            }
+        }
+    }
+
     // MARK: - Core Data stack
     // Get and set the persistentContainer object
     lazy var persistentContainer: NSPersistentContainer = {
@@ -46,4 +61,35 @@ final class CoreDataHelper
             return (nil,error)
         }
     }
+    
+    @discardableResult func deleteAllObjects() -> Error? {
+        
+        // List of multiple objects to delete
+        let (objects,_) = self.fetchManagedObject(managedObject: CryptoCoinEntity.self)
+
+        // Get a reference to a managed object context
+        let context = CoreDataHelper.shared.context
+
+        guard let objects = objects else { return NSError(domain: "Objects are nil", code: 500)}
+        
+        // Delete multiple objects
+        for object in objects {
+            context.delete(object)
+        }
+
+        // Save the deletions to the persistent store
+        do {
+            try context.save()
+        }
+        catch {
+            return error
+        }
+        
+        return nil
+    }
+    
+    
 }
+
+
+

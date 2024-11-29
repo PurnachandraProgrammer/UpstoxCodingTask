@@ -38,10 +38,11 @@ class CryptoCoinRepository : CryptoDataRepository {
             
             if let result = cryptoCoinsResult.0 {
                 // TODO: delete data from core data and then insert
-                coreDataService.insertCryptoCoinsInLocalStorage(records: result) { error in
-                    
-                    // TODO: fetch the data from local storage and return from here.
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.coreDataService.insertCryptoCoinsInLocalStorage(records: result)
                 }
+                    // TODO: fetch the data from local storage and return from here.
                 return cryptoCoinsResult
             }
             else {

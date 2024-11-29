@@ -13,7 +13,7 @@ struct FilterModel {
 /// This class is main view model of this applicaiton.
 public class CryptoCoinsListViewModel {
     
-    private var cryptoCoinRepository:CryptoCoinRepository!
+    private var cryptoCoinRepository:CryptoDataRepository!
     private var cryptoCoinsList: [CryptoCoin] = []
     var filteredCryptoCoinsList: Dynamic<[CryptoCoin]> = Dynamic([])
     var apiFetchError:Dynamic<Error?> = Dynamic(nil)
@@ -21,7 +21,7 @@ public class CryptoCoinsListViewModel {
     var filterModel = FilterModel()
     
     // Depedency injection
-    init(cryptoCoinRepository: CryptoCoinRepository!) {
+    init(cryptoCoinRepository: CryptoDataRepository) {
         self.cryptoCoinRepository = cryptoCoinRepository
     }
     

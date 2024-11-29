@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CryptoSearchFilterViewController: UIViewController {
 
@@ -19,10 +20,83 @@ class CryptoSearchFilterViewController: UIViewController {
     let newCoinsButtonView = ButtonView(title: "New Coins")
 
     func setUpView() {
-     
-        view.backgroundColor = .clear
         
-        let filterModel = cryptoCoinsListViewModel.filterModel
+        activeCoinsButtonView.buttonStatusUpdatedClosure = { selectedStatus in
+            
+            if selectedStatus {
+                
+                if self.cryptoCoinsListViewModel.filterModel.isInActiveCoin || self.cryptoCoinsListViewModel.filterModel.isOnlyTokens {
+                    Utility.showAlert(title: "Error", message: "Selection not allowed", withPresenter: self)
+                    return
+                }
+            }
+            
+            self.cryptoCoinsListViewModel.filterModel.isActiveCoin = selectedStatus
+            self.activeCoinsButtonView.updatedButtonStatus(isButtonSelected: selectedStatus)
+
+        }
+        
+        inActiveCoinsButtonView.buttonStatusUpdatedClosure = { selectedStatus in
+            
+            if selectedStatus {
+                
+                if self.cryptoCoinsListViewModel.filterModel.isActiveCoin || self.cryptoCoinsListViewModel.filterModel.isOnlyTokens {
+                    Utility.showAlert(title: "Error", message: "Selection not allowed", withPresenter: self)
+                    return
+                }
+            }
+            
+            self.cryptoCoinsListViewModel.filterModel.isInActiveCoin = selectedStatus
+            self.inActiveCoinsButtonView.updatedButtonStatus(isButtonSelected: selectedStatus)
+            return
+        }
+        
+        onlyTokensButtonView.buttonStatusUpdatedClosure = { selectedStatus in
+            
+            if selectedStatus {
+                if self.cryptoCoinsListViewModel.filterModel.isActiveCoin || self.cryptoCoinsListViewModel.filterModel.isInActiveCoin ||
+                    self.cryptoCoinsListViewModel.filterModel.isOnlyCoins ||
+                    self.cryptoCoinsListViewModel.filterModel.isNewCoins
+                {
+                
+                    Utility.showAlert(title: "Error", message: "Selection not allowed", withPresenter: self)
+                    return}
+            }
+            
+            self.cryptoCoinsListViewModel.filterModel.isOnlyTokens = selectedStatus
+            self.onlyTokensButtonView.updatedButtonStatus(isButtonSelected: selectedStatus)
+        }
+        
+        onlyCoinsButtonView.buttonStatusUpdatedClosure = { selectedStatus in
+            
+            if selectedStatus {
+                
+                if self.cryptoCoinsListViewModel.filterModel.isOnlyTokens {
+                
+                    Utility.showAlert(title: "Error", message: "Selection not allowed", withPresenter: self)
+                    return}
+            }
+            
+            self.cryptoCoinsListViewModel.filterModel.isOnlyCoins = selectedStatus
+            self.onlyCoinsButtonView.updatedButtonStatus(isButtonSelected: selectedStatus)
+        }
+
+        newCoinsButtonView.buttonStatusUpdatedClosure = { selectedStatus in
+            
+            if selectedStatus {
+                
+                if self.cryptoCoinsListViewModel.filterModel.isOnlyTokens {
+                
+                    Utility.showAlert(title: "Error", message: "Selection not allowed", withPresenter: self)
+                    return}
+            }
+            
+            self.cryptoCoinsListViewModel.filterModel.isNewCoins = selectedStatus
+            self.newCoinsButtonView.updatedButtonStatus(isButtonSelected: selectedStatus)
+        }
+        
+        
+        view.backgroundColor = .clear
         
         let topStackView = UIStackView(arrangedSubviews:[activeCoinsButtonView,inActiveCoinsButtonView,onlyTokensButtonView])
         topStackView.axis = .horizontal
@@ -80,20 +154,22 @@ class CryptoSearchFilterViewController: UIViewController {
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
         
+        let filterModel = cryptoCoinsListViewModel.filterModel
+
         activeCoinsButtonView.isButtonSelected = filterModel.isActiveCoin
-        activeCoinsButtonView.buttonSelected()
+        activeCoinsButtonView.configureButton()
         
         inActiveCoinsButtonView.isButtonSelected = filterModel.isInActiveCoin
-        inActiveCoinsButtonView.buttonSelected()
+        inActiveCoinsButtonView.configureButton()
 
         onlyTokensButtonView.isButtonSelected = filterModel.isOnlyTokens
-        onlyTokensButtonView.buttonSelected()
+        onlyTokensButtonView.configureButton()
 
         onlyCoinsButtonView.isButtonSelected = filterModel.isOnlyCoins
-        onlyCoinsButtonView.buttonSelected()
+        onlyCoinsButtonView.configureButton()
 
         newCoinsButtonView.isButtonSelected = filterModel.isNewCoins
-        newCoinsButtonView.buttonSelected()
+        newCoinsButtonView.configureButton()
         
     }
     

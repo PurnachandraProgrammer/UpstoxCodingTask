@@ -13,7 +13,7 @@ class ButtonView : UIView {
     var imageView:UIImageView?
     var stackView:UIStackView?
     var isButtonSelected:Bool = false
-    var buttonSelectedClosure:((Bool)->Void)?
+    var buttonStatusUpdatedClosure:((Bool)->Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,7 +21,7 @@ class ButtonView : UIView {
         setUpView()
     }
 
-    required init(title:String, imageName:String = "checkmark-icon", isSelection:Bool = false) {
+    required init(title:String, imageName:String = "checkmark-icon", isSelection:Bool = false,callBack:((Bool) -> Void)? = nil) {
         
         super.init(frame: CGRect.zero)
         super.backgroundColor = .white
@@ -33,14 +33,16 @@ class ButtonView : UIView {
             imageView?.image = UIImage(systemName: imageName)
         }
         
+        self.buttonStatusUpdatedClosure = callBack
+
         isButtonSelected = isSelection
-        buttonSelected()
+        configureButton()
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeViewWithSelectedStatus))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
-    func buttonSelected() {
+    func configureButton() {
         if isButtonSelected {
             imageView?.isHidden = false
             super.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 209/255, alpha: 1.0)
@@ -52,9 +54,17 @@ class ButtonView : UIView {
     }
     
     @objc func changeViewWithSelectedStatus() {
-        isButtonSelected = !isButtonSelected
-        buttonSelected()
-        self.buttonSelectedClosure?(isButtonSelected)
+        
+        var selectedStatus = !isButtonSelected
+        //isButtonSelected = !isButtonSelected
+        buttonStatusUpdatedClosure?(selectedStatus)
+//        configureButton()
+    }
+    
+    func updatedButtonStatus(isButtonSelected:Bool) {
+        
+        self.isButtonSelected = isButtonSelected
+        configureButton()
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +95,7 @@ class ButtonView : UIView {
         imageView.isHidden = true
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 10).isActive = true
         
         let stackView = UIStackView(arrangedSubviews: [imageView,button])

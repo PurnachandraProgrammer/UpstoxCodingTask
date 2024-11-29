@@ -23,32 +23,50 @@ final class CryptoDataService : CryptoLocalStorageService {
         return (cryptoCoinsList,nil)
     }
     
-    func insertCryptoCoinsInLocalStorage(records: Array<CryptoCoin>, completionHandler: @escaping ((any Error)?) -> Void) {
-        
-        //debugPrint("CryptoCoreDataService: Insert record operation is starting")
-       
-        CoreDataHelper.shared.persistentContainer.performBackgroundTask { privateManagedContext in
+    @discardableResult func insertCryptoCoinsInLocalStorage(records: Array<CryptoCoin>) -> Error? {
+
+        let coreDataHelper = CoreDataHelper.shared
+        let context = coreDataHelper.context
+
+        for record in records {
+
+            let cryptoCoin = CryptoCoinEntity(context: context)
+            cryptoCoin.name = record.name
+            cryptoCoin.symbol = record.symbol
+            cryptoCoin.isNew = record.isNew
+            cryptoCoin.isActive = record.isActive
+            cryptoCoin.type = record.type.rawValue
             
-            //Create CDPanet with private context
-            records.forEach { cryptoCoin in
-                let cryptoCoinEntity = CryptoCoinEntity(context: privateManagedContext)
-                cryptoCoinEntity.name = cryptoCoin.name
-                cryptoCoinEntity.symbol = cryptoCoin.symbol
-                cryptoCoinEntity.isNew = cryptoCoin.isNew
-                cryptoCoinEntity.isActive = cryptoCoin.isActive
-                cryptoCoinEntity.type = cryptoCoin.type.rawValue
-            }
+            coreDataHelper.saveContext()
             
-            // save the changes.
-            if(privateManagedContext.hasChanges){
-                do {
-                    try privateManagedContext.save()
-                    completionHandler(nil)
-                }
-                catch {
-                    completionHandler(error)
-                }
-            }
+
         }
+        return nil
+    }
+    
+    @discardableResult func deleteCryptoCoins() -> Error? {
+        
+        // List of multiple objects to delete
+        let (objects,_) = CoreDataHelper.shared.fetchManagedObject(managedObject: CryptoCoinEntity.self)
+
+        // Get a reference to a managed object context
+        let context = CoreDataHelper.shared.context
+
+        guard let objects = objects else { return NSError(domain: "Objects are nil", code: 500)}
+        
+        // Delete multiple objects
+        for object in objects {
+            context.delete(object)
+        }
+
+        // Save the deletions to the persistent store
+        do {
+            try context.save()
+        }
+        catch {
+            return error
+        }
+        
+        return nil
     }
 }

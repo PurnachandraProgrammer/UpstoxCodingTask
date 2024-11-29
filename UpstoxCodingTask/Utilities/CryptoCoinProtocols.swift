@@ -8,7 +8,7 @@ protocol CryptoCoinListBaseService {
 protocol CryptoLocalStorageService {
     
     func getCryptoCoinsListFromLocalStorage() -> ([CryptoCoin]?,Error?)
-    func insertCryptoCoinsInLocalStorage(records:Array<CryptoCoin>,completionHandler: @escaping (_ error:Error?) -> Void)
+    func insertCryptoCoinsInLocalStorage(records: Array<CryptoCoin>) -> Error?
 }
 
 protocol CryptoCoinListApiResourceService : CryptoCoinListBaseService {

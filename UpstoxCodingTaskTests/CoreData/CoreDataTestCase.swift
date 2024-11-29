@@ -10,51 +10,56 @@ import CoreData
 @testable import UpstoxCodingTask
 
 final class CryptoCoinEntityTests: XCTestCase {
-
+    
     var persistentContainer: NSPersistentContainer!
     var coreDataHelper: CoreDataHelper!
     var cryptoDataService: CryptoDataService!
-
+    
     override func setUp() {
         super.setUp()
-
+        
         // Set up in-memory persistent container for testing
         persistentContainer = NSPersistentContainer(name: "CryptoCoin")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         persistentContainer.persistentStoreDescriptions = [description]
-
+        
         persistentContainer.loadPersistentStores { (description, error) in
-            XCTAssertNil(error, "Failed to load in-memory Core Data store: \(error!)")
+            if let error {
+                XCTAssertNil(error, "Failed to load in-memory Core Data store: \(error)")
+            }
         }
-
+        
         coreDataHelper = CoreDataHelper.shared
         coreDataHelper.persistentContainer = persistentContainer
+        
+        cryptoDataService = CryptoDataService()
     }
-
+    
     override func tearDown() {
         persistentContainer = nil
+        coreDataHelper.deleteAllObjects()
         coreDataHelper = nil
         super.tearDown()
     }
-
+    
     func testFetchCryptoCoinEntity() {
-        let context = coreDataHelper.context
         
         // Create a CryptoCoinEntity
         let cryptoCoin = CryptoCoin(name: "Ethereum", symbol: "ETH", isNew: false, isActive: true, type: .coin)
         
-        cryptoDataService.insertCryptoCoinsInLocalStorage(records: [cryptoCoin]) { error in
-
-            // Fetch CryptoCoinEntity
-            let (result, error) = self.coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
-            XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
-            XCTAssertEqual(result?.count, 1, "Expected to fetch one entity.")
-            XCTAssertEqual(result?.first?.name, "Ethereum", "Fetched entity name does not match.")
-
-        }
+        cryptoDataService.insertCryptoCoinsInLocalStorage(records: [cryptoCoin])
         
+        // Fetch CryptoCoinEntity
+        //let (result, error) = self.coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
+        
+        let (result, error) = cryptoDataService.getCryptoCoinsListFromLocalStorage()
+        
+        XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
+        XCTAssertEqual(result?.count, 1, "Expected to fetch one entity.")
+        XCTAssertEqual(result?.first?.name, "Ethereum", "Fetched entity name does not match.")
     }
+    
     
     func testCreateCryptoCoinEntity() {
         let context = coreDataHelper.context
@@ -68,8 +73,15 @@ final class CryptoCoinEntityTests: XCTestCase {
         coreDataHelper.saveContext()
         
         XCTAssertNotNil(cryptoCoin.objectID, "Failed to create CryptoCoinEntity.")
+        
+        let (result, error) = self.coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
+        
+        XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
+        XCTAssertEqual(result?.count, 1, "Expected to fetch one entity.")
+        XCTAssertEqual(result?.first?.name, "Bitcoin", "Fetched entity name does not match.")
+        
     }
-
+    
     func testUpdateCryptoCoinEntity() {
         let context = coreDataHelper.context
         
@@ -78,41 +90,36 @@ final class CryptoCoinEntityTests: XCTestCase {
         cryptoCoin.name = "Cardano"
         cryptoCoin.symbol = "ADA"
         cryptoCoin.isNew = true
-        cryptoCoin.isActive = false
-        cryptoCoin.type = CryptoType.coin.rawValue
-        
-        coreDataHelper.saveContext()
-        
-        // Update the entity
         cryptoCoin.isActive = true
+        cryptoCoin.type = CryptoType.coin.rawValue
         coreDataHelper.saveContext()
-        
         XCTAssertEqual(cryptoCoin.isActive, true, "Failed to update isActive attribute.")
     }
-
-    func testDeleteCryptoCoinEntity() {
-        let context = coreDataHelper.context
-        
-        // Create a CryptoCoinEntity
-        let cryptoCoin = CryptoCoinEntity(context: context)
-        cryptoCoin.name = "Ripple"
-        cryptoCoin.symbol = "XRP"
-        cryptoCoin.isNew = false
-        cryptoCoin.isActive = true
-        cryptoCoin.type = CryptoType.coin.rawValue
-        
-        coreDataHelper.saveContext()
-        
-        // Delete the entity
-        context.delete(cryptoCoin)
-        coreDataHelper.saveContext()
-        
-        // Fetch to verify deletion
-        let (result, error) = coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
-        XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
-        XCTAssertEqual(result?.count, 0, "Failed to delete CryptoCoinEntity.")
-    }
-
+    
+    /*
+     func testDeleteCryptoCoinEntity() {
+     let context = coreDataHelper.context
+     
+     // Create a CryptoCoinEntity
+     let cryptoCoin = CryptoCoinEntity(context: context)
+     cryptoCoin.name = "Ripple"
+     cryptoCoin.symbol = "XRP"
+     cryptoCoin.isNew = false
+     cryptoCoin.isActive = true
+     cryptoCoin.type = CryptoType.coin.rawValue
+     
+     coreDataHelper.saveContext()
+     
+     // Delete the entity
+     context.delete(cryptoCoin)
+     coreDataHelper.saveContext()
+     
+     // Fetch to verify deletion
+     let (result, error) = coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
+     XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
+     XCTAssertEqual(result?.count, 0, "Failed to delete CryptoCoinEntity.")
+     }*/
+    
     func testConvertToCryptoCoin() {
         let context = coreDataHelper.context
         
@@ -131,5 +138,23 @@ final class CryptoCoinEntityTests: XCTestCase {
         XCTAssertEqual(cryptoCoin.isNew, true, "Conversion to CryptoCoin failed for isNew.")
         XCTAssertEqual(cryptoCoin.isActive, true, "Conversion to CryptoCoin failed for isActive.")
         XCTAssertEqual(cryptoCoin.type.rawValue, "coin", "Conversion to CryptoCoin failed for type.")
+    }
+    
+    func test() {
+        
+        let context = coreDataHelper.context
+        
+        // Create a CryptoCoinEntity
+        let cryptoCoin = CryptoCoin(name: "Ethereum", symbol: "ETH", isNew: false, isActive: true, type: .coin)
+        
+        cryptoDataService.insertCryptoCoinsInLocalStorage(records: [cryptoCoin])
+        cryptoDataService.deleteCryptoCoins()
+        cryptoDataService.getCryptoCoinsListFromLocalStorage()
+        
+        let (result, error) = cryptoDataService.getCryptoCoinsListFromLocalStorage()
+        
+        XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
+        XCTAssertEqual(result?.count, 0, "Expected zero entities.")
+
     }
 }

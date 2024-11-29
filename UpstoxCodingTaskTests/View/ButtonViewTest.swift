@@ -6,30 +6,71 @@
 //
 
 import XCTest
+@testable import UpstoxCodingTask
 
-final class ButtonViewTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class ButtonViewTest: XCTestCase {
+    
+    // MARK: - Test Initialization
+    
+    func testInitWithTitleAndImageName() {
+        let buttonView = ButtonView(title: "Test Title", imageName: "checkmark-icon", isSelection: true)
+        
+        XCTAssertNotNil(buttonView.button, "Button should be initialized")
+        XCTAssertNotNil(buttonView.imageView, "ImageView should be initialized")
+        XCTAssertNotNil(buttonView.stackView, "StackView should be initialized")
+        XCTAssertEqual(buttonView.button?.title(for: .normal), "Test Title", "Button title should match the initialized title")
+        XCTAssertEqual(buttonView.isButtonSelected, true, "isButtonSelected should be set correctly")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testInitWithDefaultImageName() {
+        let buttonView = ButtonView(title: "Default Image Test")
+        
+        XCTAssertEqual(buttonView.imageView?.image, UIImage(named: "checkmark-icon") ?? UIImage(systemName: "checkmark-icon"),
+                       "Image should default to 'checkmark-icon' or the system image")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    // MARK: - Test Button Selection State
+    
+    func testButtonSelected_whenSelected() {
+        let buttonView = ButtonView(title: "Selected Test", isSelection: true)
+        
+        buttonView.configureButton()
+        
+        XCTAssertEqual(buttonView.backgroundColor, UIColor(red: 209/255, green: 209/255, blue: 209/255, alpha: 1.0), "Background color should match selected color")
+        XCTAssertFalse(buttonView.imageView?.isHidden ?? true, "ImageView should be visible when selected")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testButtonSelected_whenNotSelected() {
+        let buttonView = ButtonView(title: "Not Selected Test", isSelection: false)
+        
+        buttonView.configureButton()
+        
+        XCTAssertEqual(buttonView.backgroundColor, UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0), "Background color should match non-selected color")
+        XCTAssertTrue(buttonView.imageView?.isHidden ?? false, "ImageView should be hidden when not selected")
     }
+    
+    // MARK: - Test Button Tap Action
+    
+    func testChangeViewWithSelectedStatus_togglesSelection() {
+        let buttonView = ButtonView(title: "Toggle Test", isSelection: false)
+        buttonView.updatedButtonStatus(isButtonSelected: true)
+        
+        XCTAssertTrue(buttonView.isButtonSelected, "isButtonSelected should toggle to true after tap")
+        XCTAssertFalse(buttonView.imageView?.isHidden ?? false, "ImageView should be visible after selection")
+        
+        buttonView.updatedButtonStatus(isButtonSelected: false)
 
+        XCTAssertFalse(buttonView.isButtonSelected, "isButtonSelected should toggle back to false after another tap")
+        XCTAssertTrue(buttonView.imageView?.isHidden ?? true, "ImageView should be hidden after deselection")
+    }
+    
+    // MARK: - Test Gesture Recognizer
+    
+    func testTapGestureRecognizer() {
+        let buttonView = ButtonView(title: "Gesture Test")
+        let recognizers = buttonView.gestureRecognizers
+        
+        XCTAssertNotNil(recognizers, "ButtonView should have gesture recognizers")
+        XCTAssertTrue(recognizers?.contains(where: { $0 is UITapGestureRecognizer }) ?? false, "ButtonView should have a UITapGestureRecognizer")
+    }
 }
