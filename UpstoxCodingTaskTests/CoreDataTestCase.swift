@@ -1,21 +1,18 @@
 //
-//  UpstoxCodingTaskTests.swift
+//  CoreDataTestCase.swift
 //  UpstoxCodingTaskTests
 //
-//  Created by Purnachandra on 11/10/24.
+//  Created by Purnachandra on 02/11/24.
 //
 
 import XCTest
-@testable import UpstoxCodingTask
 
-final class UpstoxCodingTaskTests: XCTestCase {
+final class CoreDataTestCase: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    
-    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
