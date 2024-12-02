@@ -302,6 +302,7 @@
 				DEVELOPMENT_TEAM = L252YGB835;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UpstoxCodingTask/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crypto;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -330,6 +331,7 @@
 				DEVELOPMENT_TEAM = L252YGB835;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UpstoxCodingTask/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Crypto;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

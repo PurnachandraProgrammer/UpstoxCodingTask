@@ -22,6 +22,12 @@ class CryptoCoinsListViewController: UIViewController {
         return activityIndicator
     }()
     
+    let refreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        return refreshControl
+    }()
+    
     lazy var cryptoCoinsListTableView: UITableView =  {
         let tableView = UITableView()
         tableView.delegate = self
@@ -52,6 +58,7 @@ class CryptoCoinsListViewController: UIViewController {
     }()
     
     
+    
     override func loadView() {
         super.loadView()
         setUpView()
@@ -62,7 +69,10 @@ class CryptoCoinsListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search-icon"), style: .plain, target: self, action:#selector(CryptoCoinsListViewController.showHideSearchBar))
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action:#selector(CryptoCoinsListViewController.showSearchFilterView))
-                                           
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        cryptoCoinsListTableView.addSubview(refreshControl) // not required when using UITableViewController
+
         view.addSubview(cryptoCoinsListTableView)
         view.addSubview(activityIndicator)
         view.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -82,6 +92,11 @@ class CryptoCoinsListViewController: UIViewController {
             .isActive = true
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        Task {
+            await cryptoCoinsListViewModel.fetchCryptoCoinsList()
+        }
+    }
     @objc func showHideSearchBar() {
         UIView.animate(withDuration: 0) { [unowned self] in
             
@@ -102,12 +117,15 @@ class CryptoCoinsListViewController: UIViewController {
         return
     }
     
+    
+    
     fileprivate func initWithBinding() {
         cryptoCoinsListViewModel.filteredCryptoCoinsList.bind { cryptoCoinsList in
             
             DispatchQueue.main.async { [weak self] in
                 self?.cryptoCoinsListTableView.reloadData()
                 self?.activityIndicator.stopAnimating()
+                self?.refreshControl.endRefreshing()
                 self?.activityIndicator.isHidden = true
             }
             return
@@ -119,6 +137,7 @@ class CryptoCoinsListViewController: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.showAlert(for: (error as NSError))
                     self?.cryptoCoinsListTableView.tableHeaderView = nil
+                    self?.refreshControl.endRefreshing()
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
                 }

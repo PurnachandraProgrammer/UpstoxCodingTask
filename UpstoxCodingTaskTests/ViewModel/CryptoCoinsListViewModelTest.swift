@@ -18,25 +18,6 @@ class CryptoCoinsListViewModelTest: XCTestCase {
         self.cryptoCoinViewModel = nil
         super.tearDown()
     }
-    
-    /*
-    func testFetchCoins() {
-        
-        let expectation = XCTestExpectation(description: "cryptocoins fetch")
-        
-        cryptoCoinViewModel.filteredCryptoCoinsList.bind { cryptoCoinsList in
-            if cryptoCoinsList.count > 0 {
-                expectation.fulfill()
-            }
-            else {
-                XCTAssert(false, "coins count should be greater than zero")
-            }
-        }
-
-        Task {
-            await cryptoCoinViewModel.fetchCryptoCoinsList()
-        }
-    }*/
 }
 
 // Mock API service, to get the planets from JSON.

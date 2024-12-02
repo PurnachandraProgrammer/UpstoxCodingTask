@@ -1,25 +1,12 @@
+//
+//  CryptoCoinApiListService.swift
+//  UpstoxCodingTask
+//
+//  Created by purnachandra rao obulasetty on 01/12/2024.
+//
+
+
 import Foundation
-
-// This class is used to fetch the planets from the server as of now.
-
-/*
-final class CryptoCoinApiListService : CryptoCoinListApiResourceService {
-    
-    func getCryptoCoinsList() async -> ([CryptoCoin]?, (any Error)?) {
-        
-        let path = Bundle.main.path(forResource: "CryptoCoinsResponse", ofType: "json")
-        let urlPath = URL(fileURLWithPath: path!)
-        
-        guard let data = try? Data(contentsOf: urlPath) else {
-            return (nil,NSError(domain: "Error", code: 500))
-        }
-        
-        let decoder = JSONDecoder()
-        let cryptoCoins: [CryptoCoin]? = try? decoder.decode([CryptoCoin].self, from: data)
-        return (cryptoCoins, nil)
-    }
-}
-*/
 
 final class CryptoCoinApiListService : CryptoCoinListApiResourceService {
     

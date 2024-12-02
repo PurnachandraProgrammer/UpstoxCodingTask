@@ -9,6 +9,7 @@ protocol CryptoLocalStorageService {
     
     func getCryptoCoinsListFromLocalStorage() -> ([CryptoCoin]?,Error?)
     func insertCryptoCoinsInLocalStorage(records: Array<CryptoCoin>) -> Error?
+    func deleteCryptoCoins() -> Error?
 }
 
 protocol CryptoCoinListApiResourceService : CryptoCoinListBaseService {

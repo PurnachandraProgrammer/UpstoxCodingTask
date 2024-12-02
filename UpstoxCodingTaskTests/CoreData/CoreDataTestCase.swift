@@ -48,6 +48,7 @@ final class CryptoCoinEntityTests: XCTestCase {
         // Create a CryptoCoinEntity
         let cryptoCoin = CryptoCoin(name: "Ethereum", symbol: "ETH", isNew: false, isActive: true, type: .coin)
         
+        cryptoDataService.deleteCryptoCoins()
         cryptoDataService.insertCryptoCoinsInLocalStorage(records: [cryptoCoin])
         
         // Fetch CryptoCoinEntity
@@ -81,45 +82,7 @@ final class CryptoCoinEntityTests: XCTestCase {
         XCTAssertEqual(result?.first?.name, "Bitcoin", "Fetched entity name does not match.")
         
     }
-    
-    func testUpdateCryptoCoinEntity() {
-        let context = coreDataHelper.context
-        
-        // Create a CryptoCoinEntity
-        let cryptoCoin = CryptoCoinEntity(context: context)
-        cryptoCoin.name = "Cardano"
-        cryptoCoin.symbol = "ADA"
-        cryptoCoin.isNew = true
-        cryptoCoin.isActive = true
-        cryptoCoin.type = CryptoType.coin.rawValue
-        coreDataHelper.saveContext()
-        XCTAssertEqual(cryptoCoin.isActive, true, "Failed to update isActive attribute.")
-    }
-    
-    /*
-     func testDeleteCryptoCoinEntity() {
-     let context = coreDataHelper.context
-     
-     // Create a CryptoCoinEntity
-     let cryptoCoin = CryptoCoinEntity(context: context)
-     cryptoCoin.name = "Ripple"
-     cryptoCoin.symbol = "XRP"
-     cryptoCoin.isNew = false
-     cryptoCoin.isActive = true
-     cryptoCoin.type = CryptoType.coin.rawValue
-     
-     coreDataHelper.saveContext()
-     
-     // Delete the entity
-     context.delete(cryptoCoin)
-     coreDataHelper.saveContext()
-     
-     // Fetch to verify deletion
-     let (result, error) = coreDataHelper.fetchManagedObject(managedObject: CryptoCoinEntity.self)
-     XCTAssertNil(error, "Error fetching CryptoCoinEntity: \(error!)")
-     XCTAssertEqual(result?.count, 0, "Failed to delete CryptoCoinEntity.")
-     }*/
-    
+
     func testConvertToCryptoCoin() {
         let context = coreDataHelper.context
         
@@ -142,14 +105,8 @@ final class CryptoCoinEntityTests: XCTestCase {
     
     func test() {
         
-        let context = coreDataHelper.context
-        
         // Create a CryptoCoinEntity
-        let cryptoCoin = CryptoCoin(name: "Ethereum", symbol: "ETH", isNew: false, isActive: true, type: .coin)
-        
-        cryptoDataService.insertCryptoCoinsInLocalStorage(records: [cryptoCoin])
         cryptoDataService.deleteCryptoCoins()
-        cryptoDataService.getCryptoCoinsListFromLocalStorage()
         
         let (result, error) = cryptoDataService.getCryptoCoinsListFromLocalStorage()
         

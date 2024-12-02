@@ -55,7 +55,7 @@ class ButtonView : UIView {
     
     @objc func changeViewWithSelectedStatus() {
         
-        var selectedStatus = !isButtonSelected
+        let selectedStatus = !isButtonSelected
         //isButtonSelected = !isButtonSelected
         buttonStatusUpdatedClosure?(selectedStatus)
 //        configureButton()

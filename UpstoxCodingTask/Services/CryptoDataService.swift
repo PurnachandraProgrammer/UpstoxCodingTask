@@ -2,7 +2,7 @@
 //  CryptoCoreDataService.swift
 //  UpstoxCodingTask
 //
-//  Created by purnachandra rao obulasetty on 25/11/2024.
+//  Created by purnachandra rao obulasetty on 01/12/2024.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ final class CryptoDataService : CryptoLocalStorageService {
         result.forEach({ coreDataCryptoCoin in
             cryptoCoinsList.append(coreDataCryptoCoin.convertToCryptoCoin())
         })
+        
         return (cryptoCoinsList,nil)
     }
     

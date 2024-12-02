@@ -37,20 +37,23 @@ class CryptoCoinRepository : CryptoDataRepository {
             // 6.
             
             if let result = cryptoCoinsResult.0 {
-                // TODO: delete data from core data and then insert
-                
-                DispatchQueue.main.async { [weak self] in
-                    self?.coreDataService.insertCryptoCoinsInLocalStorage(records: result)
-                }
-                    // TODO: fetch the data from local storage and return from here.
-                return cryptoCoinsResult
+                // delete previous data from core data and then insert data
+                _ = self.coreDataService.deleteCryptoCoins()
+                _ = self.coreDataService.insertCryptoCoinsInLocalStorage(records: result)
+                return (fetchFromCoreData(),nil)
             }
             else {
-                // fetch from core data
+                return fetchFromCoreDataOrReturnError()
             }
         }
-        else {
-            return (fetchFromCoreData(),nil)
+        return fetchFromCoreDataOrReturnError()
+        
+    }
+    
+    fileprivate func fetchFromCoreDataOrReturnError() -> ([CryptoCoin]?, (any Error)?) {
+        // fetch from core data
+        if let cryptoData = fetchFromCoreData() {
+            return (cryptoData,nil)
         }
         return (nil,NSError(domain: "Something went wrong", code: 500))
     }
